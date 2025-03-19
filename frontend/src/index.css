@@ -35,6 +35,15 @@ h1 {
   line-height: 1.1;
 }
 
+#bookCard h2 {
+  font-size: 1.5em;
+  font-style: bold;
+}
+
+#bookCard h3 {
+  font-size: 1.1em;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
