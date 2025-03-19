@@ -1,0 +1,6 @@
+@Mission11_Manirajan.API_HostAddress = http://localhost:5223
+
+GET {{Mission11_Manirajan.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
