@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68e3a28361510963b1c17bfd6c72bd7f4482f603")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
