@@ -12,14 +12,33 @@ namespace Mission11_Manirajan.API.Controllers
         public BookController(BookDbContext temp) => _bookContext = temp;
 
         [HttpGet]
-        public IActionResult GetBooks(int pageSize = 5, int pageNum = 1)
+        public IActionResult GetBooks(int pageSize = 5, int pageNum = 1, [FromQuery] List<string>? bookTypes = null)
         {
-            var catalogue = _bookContext.Books
+
+            string? favBookType = Request.Cookies["FavoriteBookType"];
+            Console.WriteLine("~~~~~~~COOKIE~~~~~~~\n" + favBookType + "Hello World");
+
+            HttpContext.Response.Cookies.Append("FavoriteBookType", "Team of Rivals", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.Now.AddMinutes(1),
+            });
+
+            var query = _bookContext.Books.AsQueryable();
+
+            if (bookTypes != null && bookTypes.Any())
+            {
+                query = query.Where(b => bookTypes.Contains(b.Category));
+            }
+
+            var totalNumBooks = query.Count();
+
+            var catalogue = query
                 .Skip((pageNum-1) * pageSize)
                 .Take(pageSize)
                 .ToList();
-
-            var totalNumBooks = _bookContext.Books.Count();
 
             var weirdObject = new
             {
@@ -28,6 +47,17 @@ namespace Mission11_Manirajan.API.Controllers
             };
 
             return Ok(weirdObject);   // Can only return 1 thing. Ok is 200 code
+        }
+
+        [HttpGet("GetBookTypes")]
+        public IActionResult GetBookTypes ()
+        {
+            var bookTypes = _bookContext.Books
+                .Select(b => b.Category)
+                .Distinct()
+                .ToList();
+         
+            return Ok(bookTypes);
         }
     }
 }
