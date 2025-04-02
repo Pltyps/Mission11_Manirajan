@@ -2,47 +2,49 @@ import { useEffect, useState } from 'react';
 import { Book } from '../types/Book';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { fetchBooks } from '../api/BooksAPI';
+import Pagination from '../components/Pagination';
 
 function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
   const [pageSize, setPageSize] = useState<number>(5);
   const [pageNum, setPageNum] = useState<number>(1);
-  const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const categoryParams = selectedCategories
-        .map((cat) => `bookTypes=${encodeURIComponent(cat)}`)
-        .join('&');
+    const loadBooks = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchBooks(pageSize, pageNum, selectedCategories);
 
-      const response = await fetch(
-        `https://localhost:5000/api/Book?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`,
-        {
-          credentials: 'include',
-        }
-      );
-      const data = await response.json();
+        //Sorting functionality
+        let sortedBooks = [...data.catalogue];
+        sortedBooks.sort((a, b) => {
+          if (sortOrder === 'asc') {
+            return a.title.localeCompare(b.title); //sort in ascending order
+          } else {
+            return b.title.localeCompare(a.title); //sort in descending order
+          }
+        });
 
-      //Sorting functionality
-      let sortedBooks = [...data.catalogue];
-      sortedBooks.sort((a, b) => {
-        if (sortOrder === 'asc') {
-          return a.title.localeCompare(b.title); //sort in ascending order
-        } else {
-          return b.title.localeCompare(a.title); //sort in descending order
-        }
-      });
-
-      setBooks(sortedBooks);
-      setTotalItems(data.totalNumBooks);
-      setTotalPages(Math.ceil(totalItems / pageSize));
+        setBooks(sortedBooks);
+        setTotalPages(Math.ceil(data.totalNumBooks / pageSize));
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchBooks();
-  }, [pageSize, pageNum, totalItems, sortOrder, selectedCategories]);
+    loadBooks();
+  }, [pageSize, pageNum, sortOrder, selectedCategories]);
+
+  if (loading) return <p>Loading books...</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
     <>
@@ -104,62 +106,16 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Pagination */}
-      <nav className="d-flex justify-content-center mt-4">
-        <ul className="pagination">
-          <li className={`page-item ${pageNum === 1 ? 'disabled' : ''}`}>
-            <button
-              className="page-link"
-              onClick={() => setPageNum(pageNum - 1)}
-            >
-              Previous
-            </button>
-          </li>
-
-          {[...Array(totalPages)].map((_, index) => (
-            <li
-              key={index + 1}
-              className={`page-item ${pageNum === index + 1 ? 'active' : ''}`}
-            >
-              <button
-                className="page-link"
-                onClick={() => setPageNum(index + 1)}
-              >
-                {index + 1}
-              </button>
-            </li>
-          ))}
-
-          <li
-            className={`page-item ${pageNum === totalPages ? 'disabled' : ''}`}
-          >
-            <button
-              className="page-link"
-              onClick={() => setPageNum(pageNum + 1)}
-            >
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      {/* Results per page dropdown */}
-      <div className="text-center mt-3">
-        <label className="form-label me-2">Results per page:</label>
-        <select
-          className="form-select w-auto d-inline"
-          value={pageSize}
-          onChange={(p) => {
-            setPageSize(Number(p.target.value));
+        <Pagination
+          currentPage={pageNum}
+          totalPages={totalPages}
+          pageSize={pageSize}
+          onPageChange={setPageNum}
+          onPageSizeChange={(newSize) => {
+            setPageSize(newSize);
             setPageNum(1);
           }}
-        >
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
+        />
       </div>
     </>
   );
