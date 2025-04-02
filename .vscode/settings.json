@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/c3f3ac9a-48d6-4f7a-81dc-0e52947a01f3/resourceGroups/appsvc_windows_eastus/providers/Microsoft.Web/sites/Mission13-Manirajan-Backend",
+  "appService.deploySubpath": "backend\\Mission11_Manirajan.API\\publish"
+}

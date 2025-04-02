@@ -69,3 +69,4 @@ C:\Users\Navin\OneDrive\Desktop\BYU Winter 2025\IS 413\Mission11_Manirajan\backe
 C:\Users\Navin\OneDrive\Desktop\BYU Winter 2025\IS 413\Mission11_Manirajan\backend\Mission11_Manirajan.API\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Navin\OneDrive\Desktop\BYU Winter 2025\IS 413\Mission11_Manirajan\backend\Mission11_Manirajan.API\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Navin\OneDrive\Desktop\BYU Winter 2025\IS 413\Mission11_Manirajan\backend\Mission11_Manirajan.API\obj\Debug\net8.0\Mission11_Manirajan.API.sourcelink.json
+C:\Users\Navin\OneDrive\Desktop\BYU Winter 2025\IS 413\Mission11_Manirajan\backend\Mission11_Manirajan.API\bin\Debug\net8.0\Bookstore.sqlite

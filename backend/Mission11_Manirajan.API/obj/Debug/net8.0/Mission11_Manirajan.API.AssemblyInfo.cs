@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1900bf6afa7b384325d1264cb3668736d6bec0fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49c3415de69cc3384c2957f50f48ca1582955490")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mission11_Manirajan.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
