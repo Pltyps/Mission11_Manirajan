@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -33,10 +35,145 @@
   }
 }
 
-.card {
-  padding: 2em;
+/* General black & white theme */
+body {
+  background-color: white; /* White background for the whole body */
+  color: black; /* Black text color */
+  font-family: Arial, sans-serif; /* Default font family */
 }
 
+.container-fluid {
+  width: 100%; /* Ensures the container spans the entire width of the screen */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card {
+  background-color: white; /* White background for card */
+  color: black; /* Black text */
+  padding: 2em;
+  border: 1px solid #ddd; /* Light border for the card */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for card */
+  transition: all 0.3s ease-in-out;
+}
+
+.card-title,
+.card-body,
+.list-unstyled li {
+  color: black; /* Ensure text color inside cards is black */
+}
+
+.card-body {
+  background-color: white; /* Ensuring card body is white */
+}
+
+/* Button default style */
+.btn {
+  background-color: #555; /* Default button color (grey) */
+  color: white;
+  border: 1px solid #444; /* Dark border color */
+  width: 100%; /* Full width buttons */
+  padding: 1rem; /* Padding for consistency */
+  font-size: 1rem; /* Button text size */
+  margin-bottom: 0.5rem; /* Space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+/* Green buttons for Buy Now, Add to Cart, Checkout */
+.btn-success {
+  background-color: #28a745; /* Green background for success buttons */
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+  border-color: #1e7e34;
+}
+
+/* Read the Docs section */
 .read-the-docs {
-  color: #888;
+  color: #888; /* Grey text color for read-the-docs */
+}
+
+/* BuyPage custom styles */
+h2 {
+  font-size: 2.5rem; /* Larger font size for title */
+  color: black; /* Black color for BuyPage title */
+  margin-bottom: 1.5rem;
+}
+
+/* CartPage custom styles */
+.table {
+  background-color: white; /* White background for tables */
+  color: black; /* Black text */
+}
+
+.table th {
+  background-color: #343a40 !important; /* Dark header background */
+  color: white !important;
+}
+
+.alert {
+  font-size: 1.2rem;
+  color: black; /* Black color for alert text */
+}
+
+/* Responsive styles */
+.container {
+  max-width: 100%; /* Ensure full-width container */
+  padding: 0 2rem; /* Add padding for small screens */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  .card {
+    padding: 1.5em; /* Slightly reduce padding on smaller screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .logo {
+    height: 5em; /* Make the logo smaller on medium screens */
+  }
+
+  h2 {
+    font-size: 2rem; /* Adjust title font size */
+  }
+
+  .card {
+    padding: 1.2em; /* Reduce card padding */
+  }
+
+  .btn {
+    font-size: 0.9rem; /* Smaller button text */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1em; /* Even smaller card padding */
+  }
+
+  h2 {
+    font-size: 1.8rem; /* Smaller title font */
+  }
+
+  .btn {
+    font-size: 0.8rem; /* Smaller button text */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Very small screens like mobile phones */
+  .container {
+    padding: 1rem; /* Less padding on mobile */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Smaller title font */
+  }
+
+  .btn {
+    font-size: 0.75rem; /* Small button font size */
+  }
 }

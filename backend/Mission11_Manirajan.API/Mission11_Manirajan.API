@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35913.81 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mission11_Manirajan.API", "Mission11_Manirajan.API.csproj", "{D48ACA4F-2C0F-EAEA-7F4C-C207D2B59A73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mission11_Manirajan.API", "backend\Mission11_Manirajan.API\Mission11_Manirajan.API.csproj", "{D48ACA4F-2C0F-EAEA-7F4C-C207D2B59A73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C0EC4454-E73A-476F-9548-EBAB6F4F8AAF}
+		SolutionGuid = {3CE39CB6-DB6E-4F34-BE98-46B8C37741E3}
 	EndGlobalSection
 EndGlobal
